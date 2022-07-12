@@ -1,0 +1,50 @@
+.winrate__container {
+  width: 260px;
+  height: 200px;
+  margin-top: 55px;
+  margin-left: 20px;
+  color: white;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  align-items: center;
+  border-radius: 5px;
+  background: #2c394b;
+  display: flex;
+  flex-direction: column;
+}
+
+.winrate__txt {
+  margin-top: 18px;
+  font-weight: 400;
+}
+
+.winrate__percent {
+  margin-top: 14px;
+  font-size: 50px;
+}
+
+.info__container {
+  display: flex;
+}
+
+.type__name {
+  margin: 10px;
+  align-items: center;
+}
+
+.num__container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.type__num {
+  margin-left: 10px;
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.popup__row2 {
+  margin-left: auto;
+}

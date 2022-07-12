@@ -1,0 +1,138 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background-color: #2c394b;
+  max-width: 400px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  transform: translateY(-100%);
+  font-size: 2.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #ebe1db;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease all;
+  z-index: -1;
+}
+
+.closeButton:hover {
+  background-color: #ff4c29;
+  color: white;
+}
+
+.form {
+  width: 100%;
+}
+
+.form__container {
+  display: flex;
+}
+
+.form label {
+  font-size: 1rem;
+  display: flex;
+  color: white;
+  outline: none;
+  flex-direction: column;
+}
+
+.Entry__Exit__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag__list {
+  display: flex;
+  height: 200px;
+  width: 300px;
+}
+
+.button__tag {
+  background-color: #ff4c29;
+  margin-left: auto;
+  border: 1px solid #393e46;
+  color: #efefef;
+  width: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.form select,
+input {
+  margin-top: 0.3rem;
+  background-color: rgb(155, 154, 154);
+  margin-bottom: 1.5rem;
+  width: 90%;
+  border-radius: 3px;
+  padding: 0.6rem;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.from__title {
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  text-transform: capitalize;
+}
+
+.button__add {
+  background-color: #ff4c29;
+  margin-left: auto;
+  border: 1px solid #393e46;
+  margin-right: 30px;
+  color: #efefef;
+  width: 100px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.button__cancel {
+  background-color: #ebe1db;
+  margin-left: auto;
+  border: 1px solid #393e46;
+  margin-right: 30px;
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+  width: 100px;
+  border-radius: 4px;
+  height: 30px;
+}
+
+.Entry__container {
+  display: flex;
+}

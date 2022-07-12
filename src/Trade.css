@@ -1,0 +1,82 @@
+.trade__element {
+  display: flex;
+  margin: 1px;
+  width: min-content;
+  color: #eeeeee;
+  background-color: #334756;
+  align-items: center;
+}
+
+.trade__Asset {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+  width: 80px;
+}
+
+.trade__Date {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+  width: 90px;
+}
+
+.trade__Size {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  padding: 10px;
+  text-align: center;
+  width: 90px;
+}
+
+.trade__Entry {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+  width: 70px;
+}
+
+.trade__Exit {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+  width: 70px;
+}
+
+.trade__Status {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+  width: 70px;
+}
+
+.trade__txt {
+  background-color: darkgreen;
+  border-radius: 2px;
+}
+
+.trade__Type {
+  background-color: #334756;
+  border-right: 1px solid gray;
+  text-align: center;
+  padding: 10px;
+  width: 50px;
+}
+
+.trade__Confluance {
+  background-color: #334756;
+  padding: 10px;
+  text-align: center;
+  width: 240px;
+}
+
+.mod__icons {
+  padding: 10px;
+  background-color: #2c394b;
+  cursor: pointer;
+}
