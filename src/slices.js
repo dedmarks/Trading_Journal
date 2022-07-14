@@ -155,15 +155,28 @@ export const tradeSlice = createSlice({
     },
     deleteTrade: (state, action) => {
       const tradeList = window.localStorage.getItem('tradeList');
-      if (tradeList) {
+      const tradeBalance = window.localStorage.getItem('tradeBalance');
+      const balanceList = window.localStorage.getItem('balanceList');
+
+      if (tradeList && tradeBalance && balanceList) {
+        const arr = JSON.parse(tradeBalance);
         const tradeListArr = JSON.parse(tradeList);
+        const balanceListArr = JSON.parse(balanceList);
+
         tradeListArr.forEach((trade, index) => {
           if (trade.id === action.payload) {
             tradeListArr.splice(index, 1);
+            balanceListArr.splice(index, 1);
+            arr.splice(index,1);
+            state.balance-= trade.profit
           }
         });
+        window.localStorage.setItem('tradeBalance', JSON.stringify(arr));
+        window.localStorage.setItem('balanceList', JSON.stringify(balanceListArr));
         window.localStorage.setItem('tradeList', JSON.stringify(tradeListArr));
         state.tradeList = tradeListArr;
+        state.balanceList= balanceListArr;
+        state.tradebalance= arr;
       }
     },
     winLongs: (state, action) => {
