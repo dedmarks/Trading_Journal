@@ -9,15 +9,41 @@ const getInitialTrade = () => {
   return []
 };
 
+const getbalance = () => {
+  const balList = window.localStorage.getItem('balance');
+  if (balList) {
+    return JSON.parse(balList);
+  }
+  window.localStorage.setItem('balance', 0);
+  return 0
+};  
 
+const getBalanceList = () => {
+  const bal = window.localStorage.getItem('balanceList');
+  if (bal) {
+    return JSON.parse(bal);
+  }
+  window.localStorage.setItem('balanceList', []);
+  return []
+};  
+
+const getTradeBalance = () => {
+  const bal = window.localStorage.getItem('tradeBalance');
+  if (bal) {
+    return JSON.parse(bal);
+  }
+  window.localStorage.setItem('tradeBalance', []);
+  return []
+};  
+ 
 
 const initialState = {
   tradeList: getInitialTrade(),
   winlongs: 0,
   longs: 0,
-  balance: 0,
-  balanceList: [],
-  tradebalance: [],
+  balance: getbalance(),
+  balanceList: getBalanceList(),
+  tradebalance: getTradeBalance(),
   wins: 0,
   shorts: 0,
   winshorts: 0,
@@ -52,6 +78,37 @@ export const tradeSlice = createSlice({
       state.balance= state.balance + parseInt(action.payload)
       state.balanceList.push(state.balance)
       state.tradebalance.push(parseInt(action.payload))
+      window.localStorage.setItem('balance', state.balance)
+      const balanceList = window.localStorage.getItem('balanceList');
+      if (balanceList) {
+        const tradeListArr = JSON.parse(balanceList);
+        tradeListArr.push(
+          state.balance,
+        );
+        window.localStorage.setItem('balanceList', JSON.stringify(tradeListArr));
+      } else {
+        window.localStorage.setItem(
+          'balanceList',
+          JSON.stringify([
+              action.payload,
+          ])
+        );
+      }
+      const tradeBalance = window.localStorage.getItem('tradeBalance');
+      if (tradeBalance) {
+        const arr = JSON.parse(tradeBalance);
+        arr.push(
+          parseInt(action.payload),
+        );
+        window.localStorage.setItem('tradeBalance', JSON.stringify(arr));
+      } else {
+        window.localStorage.setItem(
+          'tradeBalance',
+          JSON.stringify([
+              action.payload,
+          ])
+        );
+      }            
     },
 
     addTag: (state, action) => {
