@@ -6,13 +6,13 @@ const getInitialTrade = () => {
     return JSON.parse(localTradeList);
   }
   window.localStorage.setItem('tradeList', []);
+  return []
 };
 
 
 
 const initialState = {
   tradeList: getInitialTrade(),
-  tagList: [],
   winlongs: 0,
   longs: 0,
   balance: 0,
