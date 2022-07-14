@@ -166,7 +166,7 @@ export const tradeSlice = createSlice({
         tradeListArr.forEach((trade, index) => {
           if (trade.id === action.payload) {
             tradeListArr.splice(index, 1);
-            balanceListArr.splice(index, 1);
+            balanceListArr[balanceListArr.length - 1]-= trade.profit
             arr.splice(index,1);
             state.balance-= trade.profit
           }
