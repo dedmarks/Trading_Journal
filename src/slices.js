@@ -194,7 +194,7 @@ export const tradeSlice = createSlice({
         state.tradebalance= arr;
       }
     },
-    winLongs: (state, action) => {
+    winLongs: (state) => {
         let winLongs= 0
         let winShorts= 0
         let longs= 0
