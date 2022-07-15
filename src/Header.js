@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux';
 import AddBalancePopup from './AddBalancePopup';
 import './Header.css'
-import { addBalance } from './slices';
 import TodoPopup from './TodoPopup';
 
 
-function Header({trade}) {
+function Header() {
   const[popupOpen, setPopupOpen]= useState(false);
   const[addBalancePopuOpen, setAddBalancePopuOpen]= useState(false);
 
-  const dispatch= useDispatch();
-
-  const {tradeList, balance, profit}= useSelector((state) => state.trade)  
+  const { balance }= useSelector((state) => state.trade)  
   
   return (
     <div className="header">

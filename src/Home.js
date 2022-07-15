@@ -28,7 +28,7 @@ ChartJS.register(
 
 function Home() {
 
-   const {balanceList, balance, tradeList} = useSelector((state) => state.trade);
+   const {balanceList, tradeList} = useSelector((state) => state.trade);
 
 
  const options3 = {
@@ -59,33 +59,6 @@ const labels = balanceList;
   ],
 };
 
-
-  const options = {
-    responsive: true,
-    plugins: {
-      legend: {
-        position: 'top',
-      },
-      title: {
-        display: true,
-        text: 'Equity Curve',
-      },
-    },
-  };
-  
-
-  const data = {
-    
-    labels,
-    datasets: [
-      {
-        label: '',
-        data: balanceList.map((item)=> (balance)),
-        borderColor: 'rgb(53, 162, 235)',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      },
-    ],
-  };
 
     const sortedTradeList= [...tradeList];
     sortedTradeList.sort((a,b)=> new Date(b.time)- new Date(a.time));

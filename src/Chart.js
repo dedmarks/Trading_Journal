@@ -23,7 +23,7 @@ ChartJS.register(
   );
 
 function Chart() {
-    const {tradebalance, balance, tradeList} = useSelector((state) => state.trade);
+    const { tradebalance } = useSelector((state) => state.trade);
 
     const labels= tradebalance
 

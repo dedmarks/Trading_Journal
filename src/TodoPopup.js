@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import {addBalance, addTrade, updateTrade } from './slices';
 import './TodoPopup.css'
 import {v4 as uuid} from 'uuid';
-import Tag from './Tag';
 
 function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const [asset, setAsset]= useState('');
@@ -18,8 +17,6 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const [profit, setProfit]= useState('');
 
     const dispatch = useDispatch();
-
-    const {tradeList, balance}= useSelector((state) => state.trade);
 
     useEffect(() => {
         if (typ === 'update' && trade) {
