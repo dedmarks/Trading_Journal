@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import {addBalance, addTrade, updateTrade } from './slices';
-import './TodoPopup.css'
+import './TradePopup.css'
 import {v4 as uuid} from 'uuid';
 
 function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
@@ -25,6 +25,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setSize(trade.size);
           setEntry(trade.entry);
           setExit(trade.exit);
+          setProfit(trade.profit);
           setConfluance(trade.confluance);
           setStatus(trade.status);
           setType(trade.type);
@@ -34,6 +35,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setSize('');
           setEntry('');
           setExit('');
+          setProfit('')
           setConfluance('');
           setStatus('Win');
           setType('Long');
@@ -84,10 +86,10 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                             <input type="text" id="title" value={asset} onChange={(e)=>setAsset(e.target.value)}></input>
                         </label>
                     <label htmlFor="entry">Entry
-                    <input classname="Entry__input" type="text" id="title" value={entry} onChange={(e)=>setEntry(e.target.value)}></input>
+                    <input classname="Entry__input" type="number" id="title" value={entry} onChange={(e)=>setEntry(e.target.value)}></input>
                     </label>
                     <label htmlFor="size">Size
-                    <input type="text" id="title" value={size} onChange={(e)=>setSize(e.target.value)}></input>
+                    <input type="number" id="title" value={size} onChange={(e)=>setSize(e.target.value)}></input>
                     </label>
                     <label htmlFor="status" value={status} onChange={(e)=>setStatus(e.target.value)}>Status
                 <select name="status" id="status">
@@ -115,7 +117,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                     <input type="date" id="title" value={date} onChange={(e)=>setDate(e.target.value)}></input>
                     </label>
                     <label htmlFor="exit">Exit
-                    <input classname="Entry__input" type="text" id="title" value={exit} onChange={(e)=>setExit(e.target.value)}></input>
+                    <input classname="Entry__input" type="number" id="title" value={exit} onChange={(e)=>setExit(e.target.value)}></input>
                     </label>
                     <div className="tag__section">
                         <label htmlFor="confluance">Confluance

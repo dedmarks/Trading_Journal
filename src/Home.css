@@ -127,6 +127,7 @@
 .trades__container {
   overflow-y: auto;
   margin-left: 40px;
+  margin-top: 20px;
   color: white;
-  max-height: 160px;
+  max-height: 200px;
 }

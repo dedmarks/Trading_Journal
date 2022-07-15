@@ -135,22 +135,37 @@ export const tradeSlice = createSlice({
 
     updateTrade: (state, action) => {
       const tradeList = window.localStorage.getItem('tradeList');
-      if (tradeList) {
+      const balanceList = window.localStorage.getItem('balanceList');
+      const tradeBalance = window.localStorage.getItem('tradeBalance');
+
+
+      if (tradeList && balanceList && tradeBalance) {
         const tradeListArr = JSON.parse(tradeList);
-        tradeListArr.forEach((trade) => {
+        const arr = JSON.parse(tradeBalance);
+        const balanceListArr = JSON.parse(balanceList);
+        
+        tradeListArr.forEach((trade,index) => {
           if (trade.id === action.payload.id) {
             trade.asset = action.payload.asset;
             trade.date = action.payload.date;
             trade.size = action.payload.size;
+            balanceListArr[balanceListArr.length - 1]-= trade.profit
+            arr.splice(index, 1)
             trade.exit = action.payload.exit;
+            state.balance= state.balance - trade.profit
             trade.entry = action.payload.entry;
             trade.type = action.payload.type;
+            trade.profit= action.payload.profit;
             trade.status = action.payload.status;
             trade.confluance = action.payload.confluance;
           }
         });
-        window.localStorage.setItem('tradeList', JSON.stringify(tradeListArr));
+        window.localStorage.setItem('tradeBalance', JSON.stringify(arr));
+        window.localStorage.setItem('balanceList', JSON.stringify(balanceListArr));
+        window.localStorage.setItem('tradeList', JSON.stringify(tradeListArr)); 
         state.tradeList = [...tradeListArr];
+        state.balanceList= balanceListArr;
+        state.tradebalance=arr
       }
     },
     deleteTrade: (state, action) => {

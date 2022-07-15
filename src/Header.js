@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import AddBalancePopup from './AddBalancePopup';
 import './Header.css'
-import TodoPopup from './TodoPopup';
+import TradePopup from './TradePopup';
 
 
 function Header() {
@@ -19,7 +19,7 @@ function Header() {
             ADD TRADE
         </button>
         <AddBalancePopup popupOpen={addBalancePopuOpen} setPopupOpen={setAddBalancePopuOpen}/>
-        <TodoPopup typ='add' popupOpen={popupOpen} setPopupOpen={setPopupOpen}></TodoPopup>
+        <TradePopup typ='add' popupOpen={popupOpen} setPopupOpen={setPopupOpen}></TradePopup>
     </div>
   )
 }
