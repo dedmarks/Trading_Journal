@@ -1,6 +1,6 @@
 .trade__element {
   display: flex;
-  margin: 1px;
+  margin-top: 1px;
   width: min-content;
   color: #eeeeee;
   background-color: #334756;

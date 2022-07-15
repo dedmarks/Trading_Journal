@@ -68,6 +68,8 @@ const labels = balanceList;
       <div className="top__wraper">
         <div className="home__container">
         <h3 className="trade__label">Trade List</h3>
+         
+          <div className="trades__container">
           <div className="home__lables">
               <h5 className="home__asset">Asset</h5>
               <h5 className="home__date">Date</h5>
@@ -79,7 +81,6 @@ const labels = balanceList;
               <h5 className="home__type">Type</h5>
               <h5 className="home__confluance">Confluance</h5>
           </div>
-          <div className="trades__container">
             {sortedTradeList && sortedTradeList.length > 0 ? 
             sortedTradeList.map((trade) => (
                 <Trade
