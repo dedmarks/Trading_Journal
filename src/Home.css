@@ -18,6 +18,7 @@
   width: 645px;
   margin-left: 40px;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px;
   border-radius: 5px;
   background: #2c394b;
@@ -128,7 +129,7 @@
 .trade__label {
   color: #8f9194;
   margin-left: 40px;
-  margin-top: 40px;
+  margin-top: 15px;
 }
 
 
