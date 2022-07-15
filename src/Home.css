@@ -7,6 +7,13 @@
   align-items: center;
 }
 
+.coins__wrapper{
+  margin-top: 40px;
+  overflow-y: auto;
+  color: white;
+  max-height: 400px;
+}
+
 .chart__container {
   width: 645px;
   margin-left: 40px;
@@ -121,7 +128,7 @@
 .trade__label {
   color: #8f9194;
   margin-left: 40px;
-  margin-top: 15px;
+  margin-top: 40px;
 }
 
 

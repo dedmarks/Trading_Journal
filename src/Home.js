@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import "./Home.css"
 import Trade from './Trade';
 import Chart from './Chart';
 import Winrate from './Winrate';
+import axios from 'axios'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,6 +16,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import Coins from './Coins';
 
 ChartJS.register(
   CategoryScale,
@@ -62,6 +64,14 @@ const labels = balanceList;
 
     const sortedTradeList= [...tradeList];
     sortedTradeList.sort((a,b)=> new Date(b.time)- new Date(a.time));
+
+    const [coins, setCoins]= useState([]);
+
+    useEffect(() => {
+      axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').then(res => {
+        setCoins(res.data);
+      }).catch(error=> console.log(error))
+    },[])
     
   return (
     <div className="home">
@@ -101,8 +111,20 @@ const labels = balanceList;
           <Line options={options3} data={data3}/>
      </div>
      </div>
-     {/* <h3 className="trade__label">Periodic goals</h3> */}
-
+     <h3 className="trade__label">Markets</h3>
+     <div className='coins__wrapper'>
+     {coins.map(coin => {
+      return(
+      <Coins key={coin.id} 
+            name={coin.name}
+            image={coin.image}
+            volume={coin.market_cap}
+            symbol= {coin.symbol}
+            price= {coin.current_price}
+            pricechange= {coin.price_change_percentage_24h}
+      />)
+     })}
+     </div>
      </div>
   )
 }

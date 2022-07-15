@@ -1,0 +1,71 @@
+.coins__container{
+    display: flex;
+    margin-left: 40px;
+    margin-top: 0px;
+    color: aliceblue;
+}
+
+.coin__row{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid gainsboro;
+    width: 99%;
+}
+
+.coins__container h1{
+    width: 300px;
+    font-size: larger;
+    margin-left: 10px;
+}
+
+.coins__container img{
+    width: 30px;
+    height: 30px;
+}
+
+.coin__data{
+    display: flex;
+    width: 100%;
+}
+
+.coins__container p{
+    width: 320px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.red1{
+    color: lightcoral;
+}
+
+.green1{
+    color: lightgreen;
+}
+
+@media only screen and (max-width: 1100px) {
+    .coin__volume{
+        display: none;
+    }
+    
+    .coins__container p{
+        width: 120px;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .coin__name{
+        display: none;
+    }
+
+    .coin__symbol{
+        margin-left: 10px;
+    }
+  } 

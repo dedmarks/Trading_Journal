@@ -7,6 +7,10 @@
   align-items: center;
 }
 
+.green{
+
+}
+
 .trade__Asset {
   background-color: #334756;
   border-right: 1px solid gray;
@@ -55,8 +59,13 @@
   width: 70px;
 }
 
-.trade__txt {
+.green {
   background-color: darkgreen;
+  border-radius: 2px;
+}
+
+.red {
+  background-color: red;
   border-radius: 2px;
 }
 

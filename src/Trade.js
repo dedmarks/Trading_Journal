@@ -29,9 +29,14 @@ function Trade( { trade }) {
             <h5 className="trade__Entry">{trade.entry}</h5>
             <h5 className="trade__Exit">{trade.exit}</h5>
             <h5 className="trade__Exit">{trade.profit}$</h5>
-            <div className="trade__Status" >
-                <h5 className="trade__txt">{trade.status}</h5>
-            </div>
+            {trade.status === 'Win' ? (
+              <div className="trade__Status" >
+                <h5 className="trade__txt green">{trade.status}</h5>
+              </div>
+            ): (<div className="trade__Status" >
+                  <h5 className="trade__txt red">{trade.status}</h5>
+                </div>)}
+            
             <h5 className="trade__Type">{trade.type}</h5>
             <h5 className="trade__Confluance">{trade.confluance}</h5>
             <p className="mod__icons" onClick={handleUpdate} role="button" tabIndex="0"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
