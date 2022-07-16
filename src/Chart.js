@@ -48,7 +48,7 @@ function Chart() {
       {
         label: '',
         data: tradebalance.map((item)=> (item)),
-        borderColor: 'rgb(53, 162, 235)',
+        borderColor: 'rgb(255, 82, 0',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],

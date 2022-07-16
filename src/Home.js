@@ -53,10 +53,11 @@ const labels = balanceList;
   datasets: [
     {
       fill: true,
-      label: 'Dataset 2',
       data: balanceList.map(item => item),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      borderColor: 'rgb(255, 82, 0)',
+      backgroundColor: 'rgba(217, 82, 0, 0.5)',
+      tension: 0.4,
+      pointRadius: 0,
     },
   ],
 };
