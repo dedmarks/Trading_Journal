@@ -11,6 +11,14 @@
   align-items: center;
 }
 
+.calc__l {
+  margin-left: auto;
+}
+
+.line3 {
+  display: none;
+}
+
 .calc__size {
   display: flex;
   align-items: center;
