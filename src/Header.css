@@ -10,16 +10,17 @@
 }
 
 .header__balance {
-  margin-left: 40px;
+  margin-left: 20px;
 }
 
 .header__btnaddtrade {
   background-color: #ff4c29;
   margin-left: auto;
   border: 1px solid #2c394b;
-  margin-right: 30px;
+  margin-right: 20px;
   color: #efefef;
   width: 100px;
+  cursor: pointer;
   border-radius: 4px;
   height: 30px;
 }
@@ -29,6 +30,7 @@
   border: 1px solid #2c394b;
   color: #efefef;
   width: 50px;
+  cursor: pointer;
   margin-left: 10px;
   border-radius: 4px;
   height: 30px;

@@ -40,6 +40,7 @@ const getTradeBalance = () => {
 const initialState = {
   tradeList: getInitialTrade(),
   winlongs: 0,
+  user: null,
   longs: 0,
   balance: getbalance(),
   balanceList: getBalanceList(),
@@ -72,6 +73,10 @@ export const tradeSlice = createSlice({
           ])
         );
       }
+    },
+
+    setUser: (state,action) => {
+      state.user= action.payload
     },
 
     addBalance: (state,action) => {
@@ -231,6 +236,8 @@ export const tradeSlice = createSlice({
   },
 });
 
-export const { addTrade, updateTrade, deleteTrade, winLongs, addTag, addBalance } =
+export const { addTrade, updateTrade, deleteTrade, winLongs, addTag, addBalance, setUser } =
   tradeSlice.actions;
+  export const selectUserName= state => state.trade.userName
+  export const selectEmailName= state => state.trade.userEmail
 export default tradeSlice.reducer;

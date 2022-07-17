@@ -1,0 +1,44 @@
+.login__page{
+    display: flex;
+    align-items: center;
+    margin-top: 200px;
+    color: aliceblue;
+    justify-content: center;
+}
+
+.form__input1{
+    width: 240px;
+}
+
+.form__container1{
+    display: flex;
+    background-color: #2c394b;
+    padding: 25px;
+    border-radius: 5px;
+    flex-direction: column;
+}
+
+.btn__container{
+    display: flex;
+}
+
+.signin__btn1{
+    background-color: #ff4c29;
+    border: 1px solid #2c394b;
+    color: #efefef;
+    width: 120px;
+    border-radius: 4px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.signin__btn2{
+    background-color: #ff4c29;
+    margin-left: auto;
+    border: 1px solid #2c394b;
+    color: #efefef;
+    width: 120px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 30px;
+}

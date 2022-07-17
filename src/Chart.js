@@ -38,6 +38,30 @@ function Chart() {
         text: 'Profits/trade',
       },
     },
+    scales: {
+      yAxes:{
+          grid: {
+              drawBorder: true,
+              color: '#909692',
+          },
+          ticks:{
+              beginAtZero: true,
+              color: '#909692',
+              fontSize: 12,
+          }
+      },
+      xAxes: {
+          grid: {
+              drawBorder: true,
+              color: 'rgba(217, 82, 0, 0)',
+          },
+          ticks:{
+              beginAtZero: true,
+              color: '#909692',
+              fontSize: 12,
+          }
+      },
+  }
   };
   
 

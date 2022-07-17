@@ -1,21 +1,41 @@
 import './App.css';
 import Header from './Header';
-import React  from 'react';
+import React , { useEffect } from 'react';
 import Home from './Home';
-import { Provider } from 'react-redux';
-import { store } from './store';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import { useDispatch } from 'react-redux';
+import Login from './Login'
 import { Toaster } from 'react-hot-toast';
+import { auth } from './firebase';
+import { setUser } from './slices';
 
 function App() {
+
+  const dispatch= useDispatch()
+
+  useEffect(() => {
+    auth.onAuthStateChanged(authUser => {
+      console.log('USER IS ->>>>>>', authUser)
+      
+      if(authUser){
+        dispatch(setUser(authUser))
+      }else {
+        dispatch(setUser(null))
+      }
+    })
+  }, [])
+
   return (
     <>
-    <div className="App">
-      <Provider store={store}>
-      <Header/>
-      <Home/>
-      <Toaster/>
-      </Provider>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<><Header/><Home/></>}/>
+          <Route path="/login" element={<Login/>}/>
+         </Routes>
+        <Toaster/>
+      </div>
+    </Router>
     </>
   );
 }
