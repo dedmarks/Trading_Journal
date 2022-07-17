@@ -14,29 +14,28 @@
   margin-top: 20px;
 }
 
-.row{
+.row {
   display: flex;
 }
 
-.row3{
+.row3 {
   display: flex;
 }
 
-
-.calc_btn{
-    background-color: #ff4c29;
-    border: 1px solid #2c394b;
-    color: #efefef;
-    width: 50px;
-    cursor: pointer;
-    margin-right: 20px;
-    margin-top: 20px;
-    margin-left: auto;
-    border-radius: 4px;
-    height: 50px;
+.calc_btn {
+  background-color: #ff4c29;
+  border: 1px solid #2c394b;
+  color: #efefef;
+  width: 50px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-left: auto;
+  border-radius: 4px;
+  height: 50px;
 }
 
-.coins__wrapper{
+.coins__wrapper {
   margin-top: 40px;
   overflow-y: auto;
   color: white;
@@ -135,21 +134,15 @@
   flex-direction: column;
 }
 
-
-
 .chart__wrapper {
   display: flex;
 }
-
-
 
 .trade__label {
   color: #8f9194;
   margin-left: 20px;
   margin-top: 15px;
 }
-
-
 
 .trades__container {
   overflow-y: auto;
@@ -170,16 +163,16 @@
     margin-top: 20px;
     color: white;
     max-height: 200px;
-    max-width: 340px;
+    max-width: 90%;
   }
-  
-} 
+}
 
 @media only screen and (max-width: 1100px) {
-  .chart__container{
-    width: 310px;
+  .chart__container {
+    max-width: 85%;
+    height: auto;
   }
   .row3 {
     flex-direction: column;
   }
-} 
+}
