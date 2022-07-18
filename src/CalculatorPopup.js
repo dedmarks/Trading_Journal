@@ -136,11 +136,11 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Entry fee</h7>
-                        <span className="label__txt1">{fees === '0.075' ? ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(-0.00025)).toFixed(2)}</span>
+                        <span className="label__txt1">{fees === '-0.025' && type1 ==="Short" ? ((((balance*(r*-0.01))/((entry1- stopLoss))))*entry1*(-0.00025)).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2)}</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Exit fee</h7>
-                        <span className="label__txt1">{((((balance*(r*0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2)}</span>
+                        <span className="label__txt1">{type1 === 'Short' ? ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2) : ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2)}</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Order cost</h7>
