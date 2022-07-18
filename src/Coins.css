@@ -15,7 +15,7 @@
 }
 
 .coins__container h1 {
-  width: 300px;
+  width: 20%;
   font-size: larger;
   margin-left: 10px;
 }
@@ -31,7 +31,7 @@
 }
 
 .coins__container p {
-  width: 320px;
+  width: 50%;
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -47,18 +47,9 @@
   color: lightgreen;
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 800px) {
   .coin__volume {
     display: none;
-  }
-
-  .coins__container p {
-    width: 120px;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    text-align: center;
   }
 
   .coin__name {
@@ -67,5 +58,11 @@
 
   .coin__symbol {
     margin-left: 1px;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .coin__name {
+    display: none;
   }
 }

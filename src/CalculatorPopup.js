@@ -29,6 +29,8 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
         
     };
 
+    
+
   return (
     popupOpen && (
         <div className="calc__wrapper">
@@ -71,10 +73,10 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                     {fees === 'Include' ? ( <div className='line'>
                         <h7 className="label__txt">Entry order fee</h7>
                         <select name="status" className='calc__select'>
-                            <option value="0.075">
+                            <option value="market">
                                 Market (0.075%)
                             </option>
-                            <option value="-0.025">
+                            <option value="limit">
                                 Limit (-0.025%)
                             </option>
                          </select>
@@ -136,7 +138,7 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Entry fee</h7>
-                        <span className="label__txt1">{fees === '-0.025' && type1 ==="Short" ? ((((balance*(r*-0.01))/((entry1- stopLoss))))*entry1*(-0.00025)).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2)}</span>
+                        <span className="label__txt1">{fees === 'limit' ? ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(-0.00025)).toFixed(2) : (type1 === 'Short' ? ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(-0.00075)).toFixed(2))}</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Exit fee</h7>
@@ -144,7 +146,7 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Order cost</h7>
-                        <span className="label__txt1">{type1 === 'Short' ? (((-1)*((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2)}</span>
+                        <span className="label__txt1">{fees === 'Exclude' ? 0 : (type1 === 'Short' ? (((-1)*((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2))}$</span>
                     </div>                           
                 </div>
                 <div className='calc__size'>
