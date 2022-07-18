@@ -1,6 +1,6 @@
 .coins__container {
   display: flex;
-  margin-left: 40px;
+  margin-left: 20px;
   margin-top: 0px;
   color: aliceblue;
 }
@@ -56,5 +56,8 @@
 @media only screen and (max-width: 1200px) {
   .coin__name {
     display: none;
+  }
+  .coin__row {
+    width: 90%;
   }
 }

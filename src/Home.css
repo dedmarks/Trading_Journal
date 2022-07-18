@@ -38,13 +38,12 @@
 .coins__wrapper {
   margin-top: 40px;
   overflow-y: auto;
-  margin-right: 20px;
   color: white;
   max-height: 400px;
 }
 
 .chart__container {
-  width: 665px;
+  width: 46.5%;
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
