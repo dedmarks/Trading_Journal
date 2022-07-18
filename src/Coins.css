@@ -32,10 +32,6 @@
 
 .coins__container p {
   width: 50%;
-  align-content: center;
-  align-items: center;
-  justify-content: center;
-  justify-items: center;
   text-align: center;
 }
 
@@ -54,10 +50,6 @@
 
   .coin__name {
     display: none;
-  }
-
-  .coin__symbol {
-    margin-left: 1px;
   }
 }
 
