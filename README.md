@@ -1,5 +1,7 @@
 Project depleyed on netlify: https://main--glittering-lolly-7fba06.netlify.app/
 
+App uses both firebase to stor all the data
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
