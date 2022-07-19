@@ -6,6 +6,8 @@ import Chart from './Chart';
 import CalculatorPopup from './CalculatorPopup';
 import Winrate from './Winrate';
 import { Link } from 'react-router-dom'
+import {collection, orderBy, query, addDoc, onSnapshot ,Timestamp} from "firebase/firestore"
+import {db} from './firebase'
 import axios from 'axios'
 import {
   Chart as ChartJS,
@@ -33,8 +35,68 @@ ChartJS.register(
 
 function Home() {
 
-   const {balanceList, tradeList} = useSelector((state) => state.trade);
+   const { tradeList  } = useSelector((state) => state.trade);
    const[calculatorPopupOpen, setCalculatorPopupOpen]= useState(false);
+   const[tradee, setTradee]= useState([]);
+   const [coins, setCoins]= useState([]);
+   const[tardeBalance, setTradeBalance]= useState([])
+   const[balList, setBalList]= useState([])
+
+   const sortedTradeList= [...tradeList];
+   sortedTradeList.sort((a,b)=> new Date(b.time)- new Date(a.time));
+
+   const user = useSelector(state => state.trade.user)
+
+   const handleAuthentication = () => {
+     if(user){
+         auth.signOut()
+     }
+ }
+   useEffect(() => {
+     axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').then(res => {
+       setCoins(res.data);
+     }).catch(error=> console.log(error))
+   },[])
+
+   useEffect(() => {
+     try{
+       db.collection('users').doc(user?.uid).collection('trades').orderBy('created', 'desc')
+       .onSnapshot((querySnapshot) => (
+         setTradee(querySnapshot.docs.map(doc => ({
+           id: doc.id,
+           data: doc.data()
+         })))
+       ))
+       db.collection('users').doc(user?.uid).collection('tradeBalance').orderBy('created', 'asc')
+       .onSnapshot((querySnapshot) => (
+         setTradeBalance(querySnapshot.docs.map(doc => (
+           doc.data()
+         )))
+       ))
+       db.collection('users').doc(user?.uid).collection('balList').orderBy('created', 'asc')
+       .onSnapshot((querySnapshot) => (
+         setBalList(querySnapshot.docs.map(doc => (
+           doc.data()
+         )))
+       ))
+   }catch(err){
+       alert(err)
+   }
+    
+   },[user])
+
+   
+   
+   const initialValue= 0
+   const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+   const balance= balanceList.reduce((x,y) => x+y, initialValue)
+
+   const balList1= balList.map(x => x.bal)
+
+  //  console.log(balanceList)
+  //  console.log(balList1)
+
+
 
  const options3 = {
   responsive: true,
@@ -73,14 +135,14 @@ function Home() {
 }
 };
 
-const labels = balanceList;
+const labels = balList1;
 
  const data3 = {
   labels,
   datasets: [
     {
       fill: true,
-      data: balanceList.map(item => item),
+      data: balList1.map(item => item),
       borderColor: 'rgb(255, 82, 0)',
       backgroundColor: 'rgba(217, 82, 0, 0.3)',
       tension: 0.4,
@@ -90,31 +152,14 @@ const labels = balanceList;
 };
 
 
-    const sortedTradeList= [...tradeList];
-    sortedTradeList.sort((a,b)=> new Date(b.time)- new Date(a.time));
-
-    const [coins, setCoins]= useState([]);
-
-    const user = useSelector(state => state.trade.user)
-
-    const handleAuthentication = () => {
-      if(user){
-          auth.signOut()
-      }
-  }
-    useEffect(() => {
-      axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false').then(res => {
-        setCoins(res.data);
-      }).catch(error=> console.log(error))
-    },[])
-    
+   
   return (
     <div className="home">
       <div className="top__wraper">
         <div className='row'>
           <Link style={{textDecoration: 'none'}} to={!user && '/login'}>
           <div onClick={handleAuthentication} className='login__container'>
-            <h2>Hello</h2>
+            <h2>Hello {user?.email}</h2>
             <h5>Sign {user ? 'Out' : 'In'}</h5>
           </div>  
           </Link>
@@ -142,10 +187,10 @@ const labels = balanceList;
               <h5 className="home__type">Type</h5>
               <h5 className="home__confluance">Confluance</h5>
           </div>
-            {sortedTradeList && sortedTradeList.length > 0 ? 
-            sortedTradeList.map((trade) => (
+            {tradee && tradee.length > 0 ? 
+            tradee.map((trade) => (
                 <Trade
-                trade={trade}
+                trade={trade.data}
                 />
             ))
             : 'no trades found'}

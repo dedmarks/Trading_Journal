@@ -4,7 +4,7 @@ import { deleteTrade } from './slices';
 import TradePopup from './TradePopup';
 import "./Trade.css"
 
-function Trade( { trade }) {
+function Trade( { trade, id, asset, date, size, entry, exit, profit, status, type, confluance }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);

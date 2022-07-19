@@ -11,6 +11,7 @@ import { setUser } from './slices';
 
 function App() {
 
+
   const dispatch= useDispatch()
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function App() {
       }
     })
   }, [])
+  
 
   return (
     <>

@@ -215,13 +215,13 @@ export const tradeSlice = createSlice({
             }else if(trade.status === 'Win' && trade.type === 'Short'){
               winShorts++
             }
-
+    
             if (trade.type === 'Long'){
               longs++
             } else if(trade.type === 'Short'){
               shorts++
             }
-
+    
             if(trade.status === 'Win'){
               wins++
             }
@@ -238,6 +238,4 @@ export const tradeSlice = createSlice({
 
 export const { addTrade, updateTrade, deleteTrade, winLongs, addTag, addBalance, setUser } =
   tradeSlice.actions;
-  export const selectUserName= state => state.trade.userName
-  export const selectEmailName= state => state.trade.userEmail
 export default tradeSlice.reducer;

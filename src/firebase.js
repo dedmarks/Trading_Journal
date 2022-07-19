@@ -22,14 +22,14 @@ const firebaseConfig = {
   
   const dd= db.collection('trades')
 
-  getDocs(dd).then((snap) => {
-    let trades = []
-    snap.docs.forEach((doc) => {
-      trades.push({...doc.data(), id: doc.id})
-    })
-    console.log(trades)
-  }).catch(err => {
-    console.log(err.message)
-  })
+  // getDocs(dd).then((snap) => {
+  //   let trades = []
+  //   snap.docs.forEach((doc) => {
+  //     trades.push({...doc.data(), id: doc.id})
+  //   })
+  //   console.log(trades)
+  // }).catch(err => {
+  //   console.log(err.message)
+  // })
 
   export {db, auth, provider, dd};

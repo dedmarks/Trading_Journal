@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {addBalance, addTrade, updateTrade } from './slices';
 import './TradePopup.css'
+import {db} from './firebase'
+import {collection,setDoc, doc, addDoc, Timestamp} from 'firebase/firestore'
 import {v4 as uuid} from 'uuid';
 
 function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
@@ -15,6 +17,29 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const [exit, setExit]= useState('');
     const [status, setStatus]= useState('');
     const [profit, setProfit]= useState('');
+    const[tardeBalance, setTradeBalance]= useState([])
+
+    const { user } = useSelector(state => state.trade)
+
+    useEffect(() => {
+        try{
+          db.collection('users').doc(user?.uid).collection('tradeBalance')
+          .onSnapshot((querySnapshot) => (
+            setTradeBalance(querySnapshot.docs.map(doc => (
+              doc.data()
+            )))
+          ))
+      }catch(err){
+          alert(err)
+      }
+       
+      },[user])
+    
+      
+       const initialValue= 0
+       const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+       const balance= balanceList.reduce((x,y) => x+y, initialValue)
+
 
     const dispatch = useDispatch();
 
@@ -42,8 +67,32 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
         }
       }, [typ, popupOpen,trade]);
 
-    const handleSubmut = (e) =>{
+    const handleSubmut = async (e) =>{
         e.preventDefault();
+        try{
+            db.collection('users').doc(user ? user.uid : user.uid=0).collection('trades').add({
+                asset: asset,
+                profit: profit,
+                date: date,
+                size: size,
+                entry: entry,
+                exit: exit,
+                status: status,
+                confluance: confluance,
+                type: type,
+                created: Timestamp.now()
+            })
+            db.collection('users').doc(user ? user.uid : user.uid=0).collection('tradeBalance').add({
+                profit: profit,
+                created: Timestamp.now()
+            })
+            db.collection('users').doc(user ? user.uid : user.uid=0).collection('balList').add({
+                bal: parseInt(profit)+ balance,
+                created: Timestamp.now()
+            })
+        }catch(err){
+            alert(err)
+        }
         if(asset && date && size && entry && exit && status && confluance && type && profit){
             dispatch(addBalance(profit));
             if(typ === 'add'){

@@ -136,6 +136,8 @@
 
 .chart__wrapper {
   display: flex;
+  margin-right: 20px;
+  width: 100%;
 }
 
 .trade__label {
@@ -155,15 +157,18 @@
 @media only screen and (max-width: 1400px) {
   .chart__wrapper {
     flex-direction: column;
+    margin-right: 20px;
+    width: 100%;
   }
 
   .trades__container {
     overflow-y: auto;
     margin-left: 20px;
+    margin-right: 20px;
     margin-top: 20px;
     color: white;
     max-height: 200px;
-    max-width: 90%;
+    max-width: 100%;
   }
 }
 
