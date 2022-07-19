@@ -36,7 +36,7 @@ function Header() {
     <div className="header">
         <h3 className="header__balance">Balance : {balance}$</h3>
         {/* <button className="button__balance" onClick={()=>setAddBalancePopuOpen(true)}>ADD</button> */}
-        <button className="header__btnaddtrade" onClick={()=>setPopupOpen(true)}>
+        <button className="header__btnaddtrade" onClick={user ? ()=>setPopupOpen(true) : ()=>setPopupOpen(false)}>
             ADD TRADE
         </button>
         <AddBalancePopup popupOpen={addBalancePopuOpen} setPopupOpen={setAddBalancePopuOpen}/>
