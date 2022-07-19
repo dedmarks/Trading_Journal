@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import './CalculatorPopup.css'
+import { db } from './firebase';
 import { addBalance } from './slices';
 
 
@@ -14,8 +15,28 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
     const [fees, setFees]= useState('');
 
 
-    const {balance}= useSelector(state => state.trade)
+    const[tardeBalance, setTradeBalance]= useState([])
 
+    const { user }= useSelector(state => state.trade)
+  
+    useEffect(() => {
+      try{
+        db.collection('users').doc(user?.uid).collection('tradeBalance')
+        .onSnapshot((querySnapshot) => (
+          setTradeBalance(querySnapshot.docs.map(doc => (
+            doc.data()
+          )))
+        ))
+    }catch(err){
+        alert(err)
+    }
+     
+    },[user])
+  
+    
+     const initialValue= 0
+     const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+     const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
     const dispatch= useDispatch();
 
