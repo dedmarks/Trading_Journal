@@ -6,7 +6,6 @@ import Chart from './Chart';
 import CalculatorPopup from './CalculatorPopup';
 import Winrate from './Winrate';
 import { Link } from 'react-router-dom'
-import {collection, orderBy, query, addDoc, onSnapshot ,Timestamp} from "firebase/firestore"
 import {db} from './firebase'
 import axios from 'axios'
 import {
@@ -39,7 +38,6 @@ function Home() {
    const[calculatorPopupOpen, setCalculatorPopupOpen]= useState(false);
    const[tradee, setTradee]= useState([]);
    const [coins, setCoins]= useState([]);
-   const[tardeBalance, setTradeBalance]= useState([])
    const[balList, setBalList]= useState([])
 
    const sortedTradeList= [...tradeList];
@@ -67,12 +65,6 @@ function Home() {
            data: doc.data()
          })))
        ))
-       db.collection('users').doc(user?.uid).collection('tradeBalance').orderBy('created', 'asc')
-       .onSnapshot((querySnapshot) => (
-         setTradeBalance(querySnapshot.docs.map(doc => (
-           doc.data()
-         )))
-       ))
        db.collection('users').doc(user?.uid).collection('balList').orderBy('created', 'asc')
        .onSnapshot((querySnapshot) => (
          setBalList(querySnapshot.docs.map(doc => (
@@ -87,9 +79,9 @@ function Home() {
 
    
    
-   const initialValue= 0
-   const balanceList= tardeBalance.map((x) => parseInt(x.profit))
-   const balance= balanceList.reduce((x,y) => x+y, initialValue)
+  //  const initialValue= 0
+  //  const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+  //  const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
    const balList1= balList.map(x => x.bal)
 

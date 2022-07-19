@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import {addBalance, addTrade, updateTrade } from './slices';
+import {addBalance } from './slices';
 import './TradePopup.css'
 import {db} from './firebase'
-import {collection,setDoc, doc, addDoc, Timestamp} from 'firebase/firestore'
+import {Timestamp} from 'firebase/firestore'
 import {v4 as uuid} from 'uuid';
 
 function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
@@ -70,18 +70,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const handleSubmut = async (e) =>{
         e.preventDefault();
         try{
-            db.collection('users').doc(user ? user.uid : user.uid=0).collection('trades').add({
-                asset: asset,
-                profit: profit,
-                date: date,
-                size: size,
-                entry: entry,
-                exit: exit,
-                status: status,
-                confluance: confluance,
-                type: type,
-                created: Timestamp.now()
-            })
+           
             db.collection('users').doc(user ? user.uid : user.uid=0).collection('tradeBalance').add({
                 profit: profit,
                 created: Timestamp.now()
@@ -96,26 +85,55 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
         if(asset && date && size && entry && exit && status && confluance && type && profit){
             dispatch(addBalance(profit));
             if(typ === 'add'){
-            dispatch(addTrade({
-                id: uuid(),
-                asset,
-                profit,
-                date,
-                size,
-                entry,
-                exit,
-                status,
-                confluance,
-                type,
-                time: new Date().toLocaleString(),
-            }));
+            // dispatch(addTrade({
+            //     id: uuid(),
+            //     asset,
+            //     profit,
+            //     date,
+            //     size,
+            //     entry,
+            //     exit,
+            //     status,
+            //     confluance,
+            //     type,
+            //     time: new Date().toLocaleString(),
+            // }));
+           const id=uuid()
+           
+            db.collection('users').doc(user ? user.uid : user.uid=0).collection('trades').doc(id).set({
+                id: id,
+                asset: asset,
+                profit: profit,
+                date: date,
+                size: size,
+                entry: entry,
+                exit: exit,
+                status: status,
+                confluance: confluance,
+                type: type,
+                created: Timestamp.now()
+            })
             toast.success('Trade added successsfully');
             setPopupOpen(false);
         }
+
         if (typ === 'update') {
-              dispatch(updateTrade({ ...trade, asset, date, size, entry, exit, status, confluance, type, profit }));
-          }
-          setPopupOpen(false);
+            const taskDocRef = db.collection('users').doc(user?.uid).collection('trades').doc(trade.id)
+            
+               taskDocRef.update({
+                asset: asset,
+                profit: profit,
+                date: date,
+                size: size,
+                entry: entry,
+                exit: exit,
+                status: status,
+                confluance: confluance,
+                type: type,
+                created: Timestamp.now()
+              }) 
+         };
+         setPopupOpen(false)
         }
     };
   return (

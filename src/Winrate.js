@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { db } from './firebase';
 // import { winLongs } from './slices';
 import './Winrate.css'
 
 function Winrate() {
 
-    const dispatch= useDispatch();
+    // const dispatch= useDispatch();
 
-    const {tradeList, winshorts,user} = useSelector((state) => state.trade);
+    const {user} = useSelector((state) => state.trade);
     const[tradee, setTradee]= useState([]);
 
     // useEffect(()=>{
@@ -35,8 +35,6 @@ function Winrate() {
         let longs= 0
         let shorts= 0
         let wins= 0
-
-      
 
       tradee.forEach((trade) => {
         if (trade.data.status === 'Win' && trade.data.type === 'Long') {

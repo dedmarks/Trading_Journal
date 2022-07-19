@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { deleteTrade } from './slices';
 import TradePopup from './TradePopup';
 import "./Trade.css"
+import { db } from './firebase';
 
-function Trade( { trade, id, asset, date, size, entry, exit, profit, status, type, confluance }) {
+function Trade( { trade, asset, date, size, entry, exit, profit, status, type, confluance }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);
+
+  const {user} = useSelector(state => state.trade)
   
 
   const handleDelete= () => {
     dispatch(deleteTrade(trade.id));
+    db.collection('users').doc(user?.uid).collection('trades').doc(trade.id).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
   }
 
   const handleUpdate= () => {

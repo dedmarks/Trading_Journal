@@ -24,7 +24,7 @@ function App() {
         dispatch(setUser(null))
       }
     })
-  }, [])
+  }, [dispatch])
   
 
   return (
