@@ -35,7 +35,7 @@ function Header() {
   return (
     <div className="header">
         <h3 className="header__balance">Balance : {balance}$</h3>
-        <button className="button__balance" onClick={()=>setAddBalancePopuOpen(true)}>ADD</button>
+        {/* <button className="button__balance" onClick={()=>setAddBalancePopuOpen(true)}>ADD</button> */}
         <button className="header__btnaddtrade" onClick={()=>setPopupOpen(true)}>
             ADD TRADE
         </button>
