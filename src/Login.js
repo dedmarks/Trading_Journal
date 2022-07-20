@@ -15,13 +15,13 @@ function Login() {
 
     auth.signInWithEmailAndPassword(email, password).then((auth) => {
       navigate('/');
-    }).catch(error => console.log(error.message))
+    }).catch(error => alert(error.message))
   }
 
   const register = (e) => {
     e.preventDefault();
 
-    auth.createUserWithEmailAndPassword(email,password).then((auth) => {
+    auth.createUserWithEmailAndPassword(email ,password.length > 5 ? password : alert('password has to be at lest 6 character')).then((auth) => {
       console.log(auth);
       if(auth){
         navigate('/');
