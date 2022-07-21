@@ -5,7 +5,7 @@ import TradePopup from './TradePopup';
 import "./Trade.css"
 import { db } from './firebase';
 
-function Trade( { trade, asset, date, size, entry, exit, profit, status, type, confluance }) {
+function Trade( { trade }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);

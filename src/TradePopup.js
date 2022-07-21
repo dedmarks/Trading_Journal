@@ -40,6 +40,8 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
        const balanceList= tardeBalance.map((x) => parseInt(x.profit))
        const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
+       const id=uuid()
+
 
     const dispatch = useDispatch();
 
@@ -69,22 +71,23 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
 
     const handleSubmut = async (e) =>{
         e.preventDefault();
-        try{
-           
-            db.collection('users').doc(user ? user.uid : user.uid=0).collection('tradeBalance').add({
-                profit: profit,
-                created: Timestamp.now()
-            })
-            db.collection('users').doc(user ? user.uid : user.uid=0).collection('balList').add({
-                bal: parseInt(profit)+ balance,
-                created: Timestamp.now()
-            })
-        }catch(err){
-            alert(err)
-        }
         if(asset && date && size && entry && exit && status && confluance && type && profit){
             dispatch(addBalance(profit));
             if(typ === 'add'){
+                try{
+           
+                    db.collection('users').doc(user ? user.uid : user.uid=0).collection('tradeBalance').doc(id).set({
+                        profit: profit,
+                        created: Timestamp.now()
+                    })
+                    db.collection('users').doc(user ? user.uid : user.uid=0).collection('balList').doc(id).set({
+                        bal: parseInt(profit)+ balance,
+                        created: Timestamp.now()
+                    })
+                }catch(err){
+                    alert(err)
+                }
+        
             // dispatch(addTrade({
             //     id: uuid(),
             //     asset,
@@ -98,7 +101,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
             //     type,
             //     time: new Date().toLocaleString(),
             // }));
-           const id=uuid()
+          
            
             db.collection('users').doc(user ? user.uid : user.uid=0).collection('trades').doc(id).set({
                 id: id,
@@ -119,6 +122,8 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
 
         if (typ === 'update') {
             const taskDocRef = db.collection('users').doc(user?.uid).collection('trades').doc(trade.id)
+            const task1DocRef = db.collection('users').doc(user?.uid).collection('tradeBalance').doc(trade.id)
+            const task2DocRef = db.collection('users').doc(user?.uid).collection('balList').doc(trade.id)
             
                taskDocRef.update({
                 asset: asset,
@@ -131,7 +136,18 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 confluance: confluance,
                 type: type,
                 created: Timestamp.now()
-              }) 
+              })
+
+              task1DocRef.update({
+                profit: profit
+            })
+
+            task2DocRef.update({
+                bal: balance- parseInt(profit)
+            })
+
+              toast.success('Trade updated successsfully');  
+              
          };
          setPopupOpen(false)
         }
