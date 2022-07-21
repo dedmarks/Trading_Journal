@@ -56,13 +56,15 @@
 }
 
 .green {
-  background-color: darkgreen;
+  background-color: rgb(105, 172, 105);
   border-radius: 2px;
+  border: 1px solid rgb(130, 255, 130);
 }
 
 .red {
-  background-color: rgb(188, 21, 21);
+  background-color: rgb(245, 99, 99);
   border-radius: 2px;
+  border: 1px solid rgb(247, 33, 25);
 }
 
 .trade__Type {
