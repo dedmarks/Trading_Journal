@@ -135,7 +135,6 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 status: status,
                 confluance: confluance,
                 type: type,
-                created: Timestamp.now()
               })
 
               task1DocRef.update({

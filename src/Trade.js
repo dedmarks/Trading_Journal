@@ -20,6 +20,16 @@ function Trade( { trade }) {
     }).catch((error) => {
         console.error("Error removing document: ", error);
     });
+    db.collection('users').doc(user?.uid).collection('tradeBalance').doc(trade.id).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
+    db.collection('users').doc(user?.uid).collection('balList').doc(trade.id).delete().then(() => {
+        console.log("Document successfully deleted!");
+    }).catch((error) => {
+        console.error("Error removing document: ", error);
+    });
   }
 
   const handleUpdate= () => {
