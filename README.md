@@ -3,6 +3,7 @@ Project depleyed on netlify: https://main--glittering-lolly-7fba06.netlify.app/
 App uses firebase to store all the data
 
 ![alt text](src/imgs/TJ_D.png "Title")
+![alt text](src/imgs/TJ_M.png "Title") ![alt text](src/imgs/TJ_M1.png "Title")
 
 # Getting Started with Create React App
 
