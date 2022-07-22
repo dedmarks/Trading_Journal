@@ -1,18 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteTrade } from './slices';
 import TradePopup from './TradePopup';
 import "./Trade.css"
+import {Timestamp} from 'firebase/firestore'
 import { db } from './firebase';
 
 function Trade( { trade }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);
+  const[tardeBalance, setTradeBalance]= useState([])
 
   const {user} = useSelector(state => state.trade)
 
-   
+    useEffect(() => {
+        try{
+          db.collection('users').doc(user?.uid).collection('tradeBalance')
+          .onSnapshot((querySnapshot) => (
+            setTradeBalance(querySnapshot.docs.map(doc => (
+              doc.data()
+            )))
+          ))
+      }catch(err){
+          alert(err)
+      }
+       
+      },[user])
+    
+      
+       const initialValue= 0
+       const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+       const balance= balanceList.reduce((x,y) => x+y, initialValue)
     
 
   const handleDelete= () => {
@@ -27,7 +46,10 @@ function Trade( { trade }) {
     }).catch((error) => {
         console.error("Error removing document: ", error);
     });
-    db.collection('users').doc(user?.uid).collection('balList').doc(trade.id).delete().then(() => {
+    db.collection('users').doc(user?.uid).collection('balList').doc(trade.id).update({
+      bal: balance- trade.profit,
+      created: Timestamp.now() 
+    }).then(() => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
