@@ -11,7 +11,9 @@ function Trade( { trade }) {
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);
 
   const {user} = useSelector(state => state.trade)
-  
+
+   
+    
 
   const handleDelete= () => {
     dispatch(deleteTrade(trade.id));

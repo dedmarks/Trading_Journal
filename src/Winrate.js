@@ -54,9 +54,6 @@ function Winrate() {
         }
       });
 
-      console.log(tradee)
-      console.log(winLongs, winShorts)
-
   return (
     <div className="winrate__container">
         <h3 className="winrate__txt">Winrate</h3>

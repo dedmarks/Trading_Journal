@@ -92,6 +92,7 @@ function Chart() {
         data: tardeBalance.map((item)=> (item.profit)),
         borderColor: 'rgb(255, 82, 0',
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        borderWidth: 1.2,
       },
     ],
   };

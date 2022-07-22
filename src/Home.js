@@ -138,6 +138,7 @@ const labels = balList1;
       borderColor: 'rgb(255, 82, 0)',
       backgroundColor: 'rgba(217, 82, 0, 0.3)',
       tension: 0.4,
+      borderWidth: 1.2,
       pointRadius: 0,
     },
   ],

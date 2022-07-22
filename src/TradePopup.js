@@ -124,6 +124,8 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
             const taskDocRef = db.collection('users').doc(user?.uid).collection('trades').doc(trade.id)
             const task1DocRef = db.collection('users').doc(user?.uid).collection('tradeBalance').doc(trade.id)
             const task2DocRef = db.collection('users').doc(user?.uid).collection('balList').doc(trade.id)
+
+            console.log(task2DocRef);
             
                taskDocRef.update({
                 asset: asset,
@@ -142,7 +144,8 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
             })
 
             task2DocRef.update({
-                bal: balance- parseInt(profit)
+                bal: balance + parseInt(profit)- trade.profit,
+                created: Timestamp.now() 
             })
 
               toast.success('Trade updated successsfully');  
