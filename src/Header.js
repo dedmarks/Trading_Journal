@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import AddBalancePopup from './AddBalancePopup';
 import { db } from './firebase';
 import './Header.css'
-import CurrencyFormat from "react-currency-format"
 import TradePopup from './TradePopup';
 
 
@@ -35,16 +34,9 @@ function Header() {
   
   return (
     <div className="header">
-        <CurrencyFormat
-          renderText={(value)=>(
-          <h3 className="header__balance">Balance: {value}</h3>
-              )}
-              decimalScale= {2}
-              value= {balance}
-              displayType= {"text"}
-              thousandSeparator={","}
-              prefix= {"$"}
-              />
+        
+          <h3 className="header__balance"> Balance: {balance}$</h3>
+          
         {/* <button className="button__balance" onClick={()=>setAddBalancePopuOpen(true)}>ADD</button> */}
         <button className="header__btnaddtrade" onClick={user ? ()=>setPopupOpen(true) : ()=>setPopupOpen(false)}>
             ADD TRADE
