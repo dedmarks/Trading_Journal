@@ -10,7 +10,7 @@ function Trade( { trade }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);
-  const[tardeBalance, setTradeBalance]= useState([])
+  const [tardeBalance, setTradeBalance]= useState([])
 
   const {user} = useSelector(state => state.trade)
 
@@ -70,7 +70,7 @@ function Trade( { trade }) {
             <h5 className="trade__Size">{trade.size}</h5>
             <h5 className="trade__Entry">{trade.entry}</h5>
             <h5 className="trade__Exit">{trade.exit}</h5>
-            <h5 className="trade__Exit">{trade.profit}$</h5>
+            <h5 className="trade__Exit">${trade.profit}</h5>
             {trade.status === 'Win' ? (
               <div className="trade__Status" >
                 <h5 className="trade__txt green">{trade.status}</h5>

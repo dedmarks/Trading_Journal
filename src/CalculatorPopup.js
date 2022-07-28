@@ -137,7 +137,7 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                 <div className='rr'>
                     <div className='line'>
                         <h7 className="label__txt">Target %</h7>
-                        <span className="label__txt1">{type1 === 'Long' ? (((target-entry1)/entry1)*100).toFixed(2) : (-1)*(((target-entry1)/entry1)*100).toFixed(2)}%</span>
+                        <span className="label__txt1">{type1 === 'Short' ? (-1)*(((target-entry1)/entry1)*100).toFixed(2) : (((target-entry1)/entry1)*100).toFixed(2)}%</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Stop loss %</h7>
