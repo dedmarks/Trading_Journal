@@ -112,7 +112,7 @@ function Goal() {
                     <h3 className="goal__txt">{goalData[0].goal}</h3>
                     <h3 className="goal__txt">{balance} / {goalData[0].goalPrice}$</h3>
                     <ProgressBar bgcolor="#fcba03" completed={((balance/goalData[0].goalPrice)*100).toFixed(3)} />
-                    <button className="editbtn" onClick={() => handleEdit()}>edit</button>
+                    <button className="editbtn" onClick={() => handleEdit()}>Edit</button>
                 </div>)}
 
                 {viewEditForm && (
