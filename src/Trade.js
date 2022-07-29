@@ -70,6 +70,8 @@ function Trade( { trade }) {
             <h5 className="trade__Size">{trade.size}</h5>
             <h5 className="trade__Entry">{trade.entry}</h5>
             <h5 className="trade__Exit">{trade.exit}</h5>
+            <h5 className="trade__Entry">{trade.stop}</h5>
+            <h5 className="trade__Entry">{(((((trade.exit-trade.entry)/trade.entry)*100).toFixed(2))/((((trade.entry-trade.stop)/trade.entry)*100).toFixed(2))).toFixed(2)}</h5>
             <h5 className="trade__Exit">${trade.profit}</h5>
             {trade.status === 'Win' ? (
               <div className="trade__Status" >

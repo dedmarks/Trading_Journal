@@ -15,9 +15,10 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const [type, setType]= useState('');
     const [entry, setEntry]= useState('');
     const [exit, setExit]= useState('');
+    const [stop, setStop]= useState('');
     const [status, setStatus]= useState('');
     const [profit, setProfit]= useState('');
-    const[tardeBalance, setTradeBalance]= useState([])
+    const [tardeBalance, setTradeBalance]= useState([])
 
     const { user } = useSelector(state => state.trade)
 
@@ -52,6 +53,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setSize(trade.size);
           setEntry(trade.entry);
           setExit(trade.exit);
+          setStop(trade.stop)
           setProfit(trade.profit);
           setConfluance(trade.confluance);
           setStatus(trade.status);
@@ -60,6 +62,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setAsset('');
           setDate('');
           setSize('');
+          setStop('');
           setEntry('');
           setExit('');
           setProfit('')
@@ -71,7 +74,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
 
     const handleSubmut = async (e) =>{
         e.preventDefault();
-        if(asset && date && size && entry && exit && status && confluance && type && profit){
+        if(asset && date && size && entry && exit && status && confluance && type && stop && profit){
             dispatch(addBalance(profit));
             if(typ === 'add'){
                 try{
@@ -109,6 +112,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 profit: profit,
                 date: date,
                 size: size,
+                stop: stop,
                 entry: entry,
                 exit: exit,
                 status: status,
@@ -131,6 +135,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 asset: asset,
                 profit: profit,
                 date: date,
+                stop: stop,
                 size: size,
                 entry: entry,
                 exit: exit,
@@ -212,6 +217,9 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                     </div>
                     <label htmlFor="profit">Profit
                     <input classname="Entry__input" type="number" id="profit" value={profit} onChange={(e)=>setProfit(e.target.value)}></input>
+                    </label>
+                    <label htmlFor="profit">Stop Loss
+                    <input classname="Entry__input" type="number" id="profit" value={stop} onChange={(e)=>setStop(e.target.value)}></input>
                     </label>
                 </div>
                 </div>

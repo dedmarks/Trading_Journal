@@ -175,7 +175,9 @@ const labels = balList1;
               <h5 className="home__size">Size</h5>
               <h5 className="home__entry">Entry</h5>
               <h5 className="home__exit">Exit</h5>
-              <h5 className="home__exit">Profit</h5>
+              <h5 className="home__status">Stop Loss</h5>
+              <h5 className="home__status">R/R</h5>
+              <h5 className="home__status">Profit</h5>
               <h5 className="home__status">Status</h5>
               <h5 className="home__type">Type</h5>
               <h5 className="home__confluance">Confluance</h5>
@@ -188,9 +190,16 @@ const labels = balList1;
             ))
             : 'no trades found'}
           </div>
+          <div className='row'>
+          <h3 className="trade__label">Trade Analytics</h3> 
         </div>
-          <Winrate/>
+        </div>
           </div>
+          <div className='row3'>
+            <Winrate/>
+            <Winrate/>
+          </div>
+          
      </div>
      <h3 className="trade__label">Chart section</h3>
      <div className="chart__wrapper">
