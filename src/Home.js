@@ -5,6 +5,7 @@ import Trade from './Trade';
 import Chart from './Chart';
 import CalculatorPopup from './CalculatorPopup';
 import Winrate from './Winrate';
+import Goal from './Goal'
 import { Link } from 'react-router-dom'
 import {db} from './firebase'
 import axios from 'axios'
@@ -197,7 +198,7 @@ const labels = balList1;
           </div>
           <div className='row3'>
             <Winrate/>
-            <Winrate/>
+            <Goal/>
           </div>
           
      </div>

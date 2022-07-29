@@ -1,0 +1,165 @@
+.winrate__wraper {
+  height: 200px;
+  width: 46.5%;
+  padding: 10px;
+  display: flex;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  align-items: center;
+  margin-left: 20px;
+  border-radius: 5px;
+  background: #2c394b;
+  margin-top: 20px;
+}
+
+.winrate__container {
+  width: 100%;
+  height: 200px;
+  margin-left: auto;
+  color: white;
+  border-radius: 5px;
+  background: #2c394b;
+  display: flex;
+  flex-direction: column;
+}
+
+.bar__container {
+  width: 100%;
+  margin-inline: 40px;
+}
+
+.editbtn {
+  margin-left: auto;
+  cursor: pointer;
+  color: white;
+  width: 70px;
+  height: 20px;
+  background-color: #ff4c29;
+  margin-top: 50px;
+}
+
+.goal__txt {
+  margin-top: 0px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.header__btnaddtrade1 {
+  width: 220px;
+  height: 40px;
+  margin-left: auto;
+  border: none;
+  outline: none;
+  margin-right: auto;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.header__btnaddtrade1:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.header__btnaddtrade1:active {
+  color: #000;
+}
+
+.header__btnaddtrade1:active:after {
+  background: transparent;
+}
+
+.header__btnaddtrade1:hover:before {
+  opacity: 1;
+}
+
+.header__btnaddtrade1:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #ff4c29;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+@media only screen and (max-width: 1400px) {
+  .winrate__wraper {
+    width: 85%;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 5%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .chart__container1 {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+@media only screen and (min-width: 1500px) {
+  .winrate__container {
+    width: 25%;
+  }
+}
+
+@media only screen and (min-width: 1700px) {
+  .winrate__container {
+    width: 30%;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .winrate__container {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 2000px) {
+  .winrate__container {
+    width: 50%;
+  }
+}
