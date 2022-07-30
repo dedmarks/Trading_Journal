@@ -116,7 +116,7 @@ function Goal() {
                 {show &&  (<div className='bar__container'>
                     <h3 className="goal__txt bg">{goalData[0].goal.toLocaleString()}</h3>
                     <h3 className="goal__txt bg">{balance.toLocaleString()} / {goalData[0].goalPrice.toLocaleString()}$</h3>
-                    <ProgressBar bgcolor="rgba(73, 255, 73, 0.5)" completed={((balance/goalData[0].goalPrice)*100).toFixed(3)} />
+                    <ProgressBar bgcolor="rgba(73, 255, 73, 0.5)" completed={((balance/goalData[0].goalPrice)*100).toFixed(2)} />
                     <button className="editbtn" onClick={() => handleEdit()}>Edit</button>
                 </div>)}
 
