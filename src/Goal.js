@@ -25,8 +25,10 @@ function Goal() {
             goal: goal,
             goalPrice: goalPrice
         })
-        setShow(true)
         setBtnShow(false)
+        setShow(true)
+        setViewForm(false)
+        setViewEditForm(false)
     }
 
     const handleProceed= () => {
@@ -58,11 +60,14 @@ function Goal() {
     useEffect(() => {
       try{
 
-        if(goalData.length !== 0){
+        if(goalData.length !== 0 && user){
             setShow(true)
             setBtnShow(false)
         }else {
             setBtnShow(true)
+            setShow(false)
+            setViewForm(false)
+            setViewEditForm(false)
         }
 
         db.collection('users').doc(user?.uid).collection('tradeBalance')
@@ -91,9 +96,9 @@ function Goal() {
 
 
   return (
-    <div className="winrate__wraper">
+    <div className="goal__wraper">
             {btnShow && (
-            <button className="header__btnaddtrade1" onClick={()=> handleProceed()}>SET YOUR GOAL</button>
+            <button className="header__btnaddtrade1" onClick={user ? ()=> handleProceed() : 0}>SET YOUR GOAL</button>
             )}
 
              {viewForm && (
@@ -109,9 +114,9 @@ function Goal() {
                  )} 
             
                 {show &&  (<div className='bar__container'>
-                    <h3 className="goal__txt">{goalData[0].goal}</h3>
-                    <h3 className="goal__txt">{balance} / {goalData[0].goalPrice}$</h3>
-                    <ProgressBar bgcolor="#fcba03" completed={((balance/goalData[0].goalPrice)*100).toFixed(3)} />
+                    <h3 className="goal__txt bg">{goalData[0].goal.toLocaleString()}</h3>
+                    <h3 className="goal__txt bg">{balance.toLocaleString()} / {goalData[0].goalPrice.toLocaleString()}$</h3>
+                    <ProgressBar bgcolor="rgba(73, 255, 73, 0.5)" completed={((balance/goalData[0].goalPrice)*100).toFixed(3)} />
                     <button className="editbtn" onClick={() => handleEdit()}>Edit</button>
                 </div>)}
 

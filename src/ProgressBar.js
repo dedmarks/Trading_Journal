@@ -1,4 +1,5 @@
 import React from "react";
+import "./ProgressBar.css"
 
 const ProgressBar = (props) => {
   const { bgcolor, completed } = props;
@@ -6,7 +7,7 @@ const ProgressBar = (props) => {
   const containerStyles = {
     height: 40,
     width: '100%',
-    backgroundColor: "#e0e0de",
+    backgroundColor: "rgba(0, 0, 0, 0.4)",
     borderRadius: 10,
   }
 
@@ -24,10 +25,10 @@ const ProgressBar = (props) => {
   }
 
   return (
-    <div style={containerStyles}>
-      <div style={fillerStyles}>
+    <div className='containerStyles'>
+      <div style={fillerStyles} >
       </div>
-      <span style={labelStyles}>{`${completed}%`}</span>
+      <h4 className='labelStyles bg'>{`${completed}%`}</h4>
     </div>
   );
 };
