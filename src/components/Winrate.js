@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { db } from './firebase';
+import { db } from '../firebase';
 // import { winLongs } from './slices';
-import './Winrate.css'
+import '../styles/Winrate.css'
 import { Chart as ChartJS, ArcElement, Tooltip } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 

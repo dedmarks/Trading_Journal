@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import './CalculatorPopup.css'
-import { db } from './firebase';
-import { addBalance } from './slices';
+import '../styles/CalculatorPopup.css'
+import { db } from '../firebase';
+import { addBalance } from '../slices';
 
 
 function CalculatorPopup({ popupOpen, setPopupOpen}) {

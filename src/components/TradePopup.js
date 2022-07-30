@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import {addBalance } from './slices';
-import './TradePopup.css'
-import {db} from './firebase'
+import {addBalance } from '../slices';
+import '../styles/TradePopup.css'
+import {db} from '../firebase'
 import {Timestamp} from 'firebase/firestore'
 import {v4 as uuid} from 'uuid';
 

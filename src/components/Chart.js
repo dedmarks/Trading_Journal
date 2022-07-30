@@ -10,7 +10,7 @@ import {
   Filler,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import {db} from './firebase'
+import {db} from '../firebase'
 import { useSelector } from 'react-redux';
 
 ChartJS.register(

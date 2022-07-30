@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
 import AddBalancePopup from './AddBalancePopup';
-import { db } from './firebase';
-import './Header.css'
+import { db } from '../firebase';
+import '../styles/Header.css'
 import TradePopup from './TradePopup';
 
 

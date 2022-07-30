@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import ProgressBar from './ProgressBar';
-import { db } from './firebase';
+import { db } from '../firebase';
 // import { winLongs } from './slices';
-import './Goal.css'
+import '../styles/Goal.css'
 
 
 

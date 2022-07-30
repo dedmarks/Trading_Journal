@@ -1,6 +1,6 @@
 import React, { useState }  from 'react'
 import { useDispatch } from 'react-redux';
-import { addBalance } from './slices';
+import { addBalance } from '../slices';
 
 function AddBalancePopup({popupOpen, setPopupOpen}) {
 

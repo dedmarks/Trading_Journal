@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux';
-import "./Home.css"
+import "../styles/Home.css"
 import Trade from './Trade';
 import Chart from './Chart';
 import CalculatorPopup from './CalculatorPopup';
 import Winrate from './Winrate';
 import Goal from './Goal'
 import { Link } from 'react-router-dom'
-import {db} from './firebase'
+import {db} from '../firebase'
 import axios from 'axios'
 import {
   Chart as ChartJS,
@@ -21,7 +21,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Coins from './Coins';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 
 ChartJS.register(
   CategoryScale,

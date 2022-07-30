@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteTrade } from './slices';
+import { deleteTrade } from '../slices';
 import TradePopup from './TradePopup';
-import "./Trade.css"
+import "../styles/Trade.css"
 import {Timestamp} from 'firebase/firestore'
-import { db } from './firebase';
+import { db } from '../firebase';
 
 function Trade( { trade }) {
 
