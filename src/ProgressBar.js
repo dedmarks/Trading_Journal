@@ -4,24 +4,12 @@ import "./ProgressBar.css"
 const ProgressBar = (props) => {
   const { bgcolor, completed } = props;
 
-  const containerStyles = {
-    height: 40,
-    width: '100%',
-    backgroundColor: "rgba(0, 0, 0, 0.4)",
-    borderRadius: 10,
-  }
-
   const fillerStyles = {
     height: '100%',
     width: `${completed}%`,
     backgroundColor: bgcolor,
     borderRadius: 'inherit',
     textAlign: 'right'
-  }
-
-  const labelStyles = {
-    color: 'white',
-    fontWeight: 'bold'
   }
 
   return (
