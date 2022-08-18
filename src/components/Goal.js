@@ -91,7 +91,7 @@ function Goal() {
     console.log(goalData)
     
      const initialValue= 0
-     const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+     const balanceList= tardeBalance.map((x) => parseFloat(x.profit))
      const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
 
@@ -114,9 +114,9 @@ function Goal() {
                  )} 
             
                 {show &&  (<div className='bar__container'>
-                    <h3 className="goal__txt bg">{goalData[0].goal.toLocaleString()}</h3>
-                    <h3 className="goal__txt bg">{balance.toLocaleString()} / {goalData[0].goalPrice.toLocaleString()}$</h3>
-                    <ProgressBar bgcolor="rgba(73, 255, 73, 0.5)" completed={((balance/goalData[0].goalPrice)*100).toFixed(2)} />
+                    <h3 className="goal__txt bg">{goalData[0].goal}</h3>
+                    <h3 className="goal__txt bg">{balance.toLocaleString()} / {(goalData[0].goalPrice).toLocaleString()} $</h3>
+                    <ProgressBar bgcolor="rgba(73, 255, 73, 0.5)" completed={balance>(goalData[0].goalPrice) ? 100: ((balance/goalData[0].goalPrice)*100).toFixed(2)} />
                     <button className="editbtn" onClick={() => handleEdit()}>Edit</button>
                 </div>)}
 

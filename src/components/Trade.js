@@ -1,38 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteTrade } from '../slices';
 import TradePopup from './TradePopup';
 import "../styles/Trade.css"
-import {Timestamp} from 'firebase/firestore'
 import { db } from '../firebase';
 
 function Trade( { trade }) {
 
   const dispatch= useDispatch();
   const [updateTradeOpen, setUpdateTradeOpen]= useState(false);
-  const [tardeBalance, setTradeBalance]= useState([])
 
   const {user} = useSelector(state => state.trade)
-
-    useEffect(() => {
-        try{
-          db.collection('users').doc(user?.uid).collection('tradeBalance')
-          .onSnapshot((querySnapshot) => (
-            setTradeBalance(querySnapshot.docs.map(doc => (
-              doc.data()
-            )))
-          ))
-      }catch(err){
-          alert(err)
-      }
-       
-      },[user])
-    
-      
-       const initialValue= 0
-       const balanceList= tardeBalance.map((x) => parseInt(x.profit))
-       const balance= balanceList.reduce((x,y) => x+y, initialValue)
-    
 
   const handleDelete= () => {
     dispatch(deleteTrade(trade.id));
@@ -46,10 +24,7 @@ function Trade( { trade }) {
     }).catch((error) => {
         console.error("Error removing document: ", error);
     });
-    db.collection('users').doc(user?.uid).collection('balList').doc(trade.id).update({
-      bal: balance- trade.profit,
-      created: Timestamp.now() 
-    }).then(() => {
+    db.collection('users').doc(user?.uid).collection('balList').doc(trade.id).delete().then(() => {
         console.log("Document successfully deleted!");
     }).catch((error) => {
         console.error("Error removing document: ", error);
@@ -70,7 +45,7 @@ function Trade( { trade }) {
             <h5 className="trade__Size">{trade.size}</h5>
             <h5 className="trade__Entry">{trade.entry}</h5>
             <h5 className="trade__Exit">{trade.exit}</h5>
-            <h5 className="trade__Entry">{trade.stop}</h5>
+            <h5 className="trade__Entry">{trade.session}</h5>
             <h5 className="trade__Entry">{(((((trade.exit-trade.entry)/trade.entry)*100).toFixed(2))/((((trade.entry-trade.stop)/trade.entry)*100).toFixed(2))).toFixed(2)}</h5>
             <h5 className="trade__Exit">{trade.profit}$</h5>
             {trade.status === 'Win' ? (

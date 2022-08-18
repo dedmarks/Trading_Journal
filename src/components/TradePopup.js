@@ -18,6 +18,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     const [stop, setStop]= useState('');
     const [status, setStatus]= useState('');
     const [profit, setProfit]= useState('');
+    const [session, setSession]= useState('');
     const [tardeBalance, setTradeBalance]= useState([])
 
     const { user } = useSelector(state => state.trade)
@@ -38,7 +39,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
     
       
        const initialValue= 0
-       const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+       const balanceList= tardeBalance.map((x) => parseFloat(x.profit))
        const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
        const id=uuid()
@@ -54,6 +55,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setEntry(trade.entry);
           setExit(trade.exit);
           setStop(trade.stop)
+          setSession(trade.session)
           setProfit(trade.profit);
           setConfluance(trade.confluance);
           setStatus(trade.status);
@@ -65,7 +67,8 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setStop('');
           setEntry('');
           setExit('');
-          setProfit('')
+          setSession('');
+          setProfit('');
           setConfluance('');
           setStatus('Win');
           setType('Long');
@@ -74,7 +77,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
 
     const handleSubmut = async (e) =>{
         e.preventDefault();
-        if(asset && date && size && entry && exit && status && confluance && type && stop && profit){
+        if(asset && date && size && entry && exit && status && confluance && session && type && stop && profit){
             dispatch(addBalance(profit));
             if(typ === 'add'){
                 try{
@@ -113,6 +116,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 date: date,
                 size: size,
                 stop: stop,
+                session: session,
                 entry: entry,
                 exit: exit,
                 status: status,
@@ -135,6 +139,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                 asset: asset,
                 profit: profit,
                 date: date,
+                session: session,
                 stop: stop,
                 size: size,
                 entry: entry,
@@ -220,6 +225,25 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
                     </label>
                     <label htmlFor="profit">Stop Loss
                     <input classname="Entry__input" type="number" id="profit" value={stop} onChange={(e)=>setStop(e.target.value)}></input>
+                    </label>
+                    <label htmlFor="type" value={session} onChange={(e)=>setSession(e.target.value)}>Session
+                    <select name="type" id="type">
+                        <option value="Asia">
+                            Asia
+                        </option>
+                        <option value="NY AM">
+                            NY AM
+                        </option>
+                        <option value="NY PM">
+                            NY PM
+                        </option>
+                        <option value="London">
+                            London
+                        </option>
+                        <option value="None">
+                            None
+                        </option>
+                    </select>
                     </label>
                 </div>
                 </div>

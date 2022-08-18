@@ -37,7 +37,7 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
   
     
      const initialValue= 0
-     const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+     const balanceList= tardeBalance.map((x) => parseFloat(x.profit))
      const balance= balanceList.reduce((x,y) => x+y, initialValue)
 
     const dispatch= useDispatch();
@@ -163,15 +163,15 @@ function CalculatorPopup({ popupOpen, setPopupOpen}) {
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Entry fee</h7>
-                        <span className="label__txt1">{fees === 'Exclude' ? 0 : (fees1 === 'limit' ? ((((balance*(r*0.01))/((stopLoss - entry1))))*entry1*(-0.00025)).toFixed(2) : (type1 === 'Short' ? ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(-0.00075)).toFixed(2)))}$</span>
+                        <span className="label__txt1">{fees === 'Exclude' ? 0 : (fees1 === 'limit' ? ((((balance*(r*0.01))/((stopLoss - entry1))))*entry1*(-0.00025)).toFixed(2) : (type1 === 'Short' ? ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2) : (-1)*((((balance*(r*0.01))/((entry1- stopLoss))))*entry1*(0.00075)).toFixed(2)))}$</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Exit fee</h7>
-                        <span className="label__txt1">{type1 === 'Short' ? ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2) : ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2)}$</span>
+                        <span className="label__txt1">{fees === 'Exclude' ? 0 : (type1 === 'Short' ? ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2) : ((((balance*(r*-0.01))/((entry1- stopLoss))))*target*(0.00075)).toFixed(2))}$</span>
                     </div>
                     <div className='line'>
                         <h7 className="label__txt">Order cost</h7>
-                        <span className="label__txt1">{fees === 'Exclude' ? 0 : (type1 === 'Short' ? (((-1)*((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2))}$</span>
+                        <span className="label__txt1">{(type1 === 'Short' ? (((-1)*((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2) : ((((balance*(r*0.01))/((entry1- stopLoss))))*entry1).toFixed(2))}$</span>
                     </div>                           
                 </div>
                 <div className='calc__size'>

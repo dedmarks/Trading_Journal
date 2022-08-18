@@ -29,7 +29,7 @@ function Header() {
 
   
    const initialValue= 0
-   const balanceList= tardeBalance.map((x) => parseInt(x.profit))
+   const balanceList= tardeBalance.map((x) => parseFloat(x.profit))
    const balance= balanceList.reduce((x,y) => x+y, initialValue)
   
   return (

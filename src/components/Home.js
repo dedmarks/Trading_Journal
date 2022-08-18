@@ -22,6 +22,7 @@ import {
 import { Line } from 'react-chartjs-2';
 import Coins from './Coins';
 import { auth } from '../firebase';
+import Sessions from './Sessions';
 
 ChartJS.register(
   CategoryScale,
@@ -176,7 +177,7 @@ const labels = balList1;
               <h5 className="home__size">Size</h5>
               <h5 className="home__entry">Entry</h5>
               <h5 className="home__exit">Exit</h5>
-              <h5 className="home__status">Stop Loss</h5>
+              <h5 className="home__status">Session</h5>
               <h5 className="home__status">R/R</h5>
               <h5 className="home__status">Profit</h5>
               <h5 className="home__status">Status</h5>
@@ -192,7 +193,7 @@ const labels = balList1;
             : 'no trades found'}
           </div>
           <div className='row'>
-          <h3 className="trade__label">Trade Analytics</h3> 
+          <h3 className="trade__label">Trade analytics</h3> 
         </div>
         </div>
           </div>
@@ -200,16 +201,21 @@ const labels = balList1;
             <Winrate/>
             <Goal/>
           </div>
-          
+          <h3 className="trade__label">Sessions analytics</h3>
+          <div className='mr'>
+             <Sessions/>
+          </div>
      </div>
      <h3 className="trade__label">Chart section</h3>
      <div className="chart__wrapper">
+     <div className="row3">
      <div className="chart__container">
        <Chart/>
      </div>
      <div className="chart__container">
           <Line options={options3} data={data3}/>
      </div>
+      </div>  
      </div>
      <h3 className="trade__label">Markets</h3>
      <div className='coins__wrapper'>

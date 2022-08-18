@@ -1,6 +1,6 @@
 .winrate__wraper {
   height: 200px;
-  width: 46.5%;
+  width: 50%;
   padding: 10px;
   display: flex;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -46,10 +46,9 @@
 
 @media only screen and (max-width: 1400px) {
   .winrate__wraper {
-    width: 85%;
+    width: 93%;
     height: 200px;
     margin-top: 20px;
-    margin-left: 5%;
   }
 }
 

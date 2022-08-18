@@ -20,6 +20,7 @@
 
 .row3 {
   display: flex;
+  margin-right: 20px;
 }
 
 .calc_btn {
@@ -42,8 +43,12 @@
   max-height: 400px;
 }
 
+.mr {
+  margin-right: 20px;
+}
+
 .chart__container {
-  width: 46.5%;
+  width: 665px;
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
@@ -180,10 +185,7 @@
 
 @media only screen and (max-width: 1400px) {
   .chart__container {
-    width: 85%;
+    width: 93%;
     height: auto;
-  }
-  .row3 {
-    flex-direction: column;
   }
 }
