@@ -67,7 +67,7 @@ function TodoPopup({typ, popupOpen, setPopupOpen, trade}) {
           setStop('');
           setEntry('');
           setExit('');
-          setSession('');
+          setSession('London');
           setProfit('');
           setConfluance('');
           setStatus('Win');
